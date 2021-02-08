@@ -1,44 +1,45 @@
 import {props, isArrayType} from './schema';
 import {write} from './write';
 import {article, code, hasOwnProperty, isArray, link} from './util';
+import { api } from "../api";
 
-export function generateDoc(schema, api, path, prefix) {
+export function generateDoc(schema, path, prefix) {
   // build documentation page for each top-level method
-  const jobs = Object.keys(api).map(key => {
+  const jobs = Object.keys(api).map((key) => {
     let name = key;
-    if (key.startsWith('_')) {
+    if (key.startsWith("_")) {
       return; // skip private methods
-    } else if (key.startsWith('$')) {
+    } else if (key.startsWith("$")) {
       name = key.slice(1);
     }
-    const def = props(schema, {$ref: '#/definitions/' + api[key].def});
+    const def = props(schema, { $ref: "#/definitions/" + api[key].def });
     return write(`${path}/${name}.md`, docMethod(name, api[key], def, prefix));
   });
 
   // build index of top-level methods
-  jobs.push(write(`${path}/index.md`, docIndex(api, docIndexEntry, prefix)));
+  jobs.push(write(`${path}/index.md`, docIndex(docIndexEntry, prefix)));
 
   return Promise.all(jobs);
 }
 
-function docIndex(api, generate, prefix) {
+function docIndex(generate, prefix) {
   // group into sections
   const sec = {};
 
-  Object.keys(api).forEach(k => {
+  Object.keys(api).forEach((k) => {
     const ref = api[k].doc;
     (sec[ref] || (sec[ref] = [])).push(k);
   });
 
-  let code = '## Vega-Lite API Reference\n';
+  let code = "## Vega-Lite API Reference\n";
 
-  Object.keys(sec).forEach(ref => {
+  Object.keys(sec).forEach((ref) => {
     code += `\n### ${ref}\n\n`;
 
-    sec[ref].forEach(name => {
-      if (name.startsWith('_')) {
+    sec[ref].forEach((name) => {
+      if (name.startsWith("_")) {
         // skip private methods
-      } else if (name.startsWith('$')) {
+      } else if (name.startsWith("$")) {
         code += generate(name.slice(1), api[name], prefix);
       } else {
         code += generate(name, api[name], prefix);

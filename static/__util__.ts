@@ -1,8 +1,8 @@
 const Data = Symbol('data');
 let id_counter = 0;
 
-export function id(prefix) {
-  return (prefix || '') + (++id_counter);
+export function id(prefix: string) {
+  return (prefix || "") + ++id_counter;
 }
 
 export class BaseObject {
@@ -20,19 +20,19 @@ export function assign(target, ...sources) {
   return target;
 }
 
-export function flat(value) {
+export function flat<T = any>(value: T[]): T[] {
   return Array.isArray(value) ? [].concat(...value) : value;
 }
 
-export function get(obj, name) {
+export function get<T = any>(obj: T, name: keyof T) {
   return obj[Data][name];
 }
 
-export function set(obj, name, value) {
+export function set<T = any>(obj: T, name: keyof T, value: any) {
   obj[Data][name] = object(value);
 }
 
-export function copy(obj) {
+export function copy<T>(obj: T): T {
   const mod = Object.create(Object.getPrototypeOf(obj));
   Object.assign(mod, obj);
   mod[Data] = Object.assign({}, obj[Data]);
@@ -43,8 +43,7 @@ export function init(obj, value) {
   obj[Data] = value || {};
 }
 
-function recurse(d, flag) {
-  //console.log('RECURSE', d);
+function recurse(d, flag?) {
   return d && d.toObject ? d.toObject(flag) : toObject(d);
 }
 
@@ -90,22 +89,22 @@ export function nest(obj, keys, rest) {
 
 export const isArray = Array.isArray;
 
-export function isBoolean(_) {
-  return typeof _ === 'boolean';
+export function isBoolean(_: any): boolean {
+  return typeof _ === "boolean";
 }
 
-export function isIterable(_) {
-  return isObject(_) && typeof _[Symbol.iterator] === 'function';
+export function isIterable(_: any): boolean {
+  return isObject(_) && typeof _[Symbol.iterator] === "function";
 }
 
-export function isNumber(_) {
-  return typeof _ === 'number';
+export function isNumber(_: any): boolean {
+  return typeof _ === "number";
 }
 
-export function isObject(_) {
+export function isObject(_: any): boolean {
   return _ === Object(_) && !isArray(_);
 }
 
-export function isString(_) {
-  return typeof _ === 'string';
+export function isString(_: any): boolean {
+  return typeof _ === "string";
 }

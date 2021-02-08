@@ -18,7 +18,8 @@
   "repository": "vega/vega-lite-api",
   "scripts": {
     "prebuild": "rimraf build src docs/api && mkdir build src docs/api && cp static/* src && cp README.md docs/index.md",
-    "build": "node rollup",
+    "build-api-ts": "tsc",
+    "build": "yarn build-api-ts && node rollup",
     "pretest": "yarn build",
     "test": "tape 'test/**/*-test.js' && eslint api static src test",
     "prepublishOnly": "yarn test && yarn minify",
@@ -33,5 +34,9 @@
     "terser": "^5.3.5",
     "vega": "^5.17.0",
     "vega-lite": "^4.17.0"
+  },
+  "dependencies": {
+    "@types/node": "^14.14.25",
+    "typescript": "^4.1.3"
   }
 }

@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "./built-api",
+    "allowJs": true,
+    "target": "es2020"
+  },
+  "include": [
+    "./api/**/*"
+  ]
+}

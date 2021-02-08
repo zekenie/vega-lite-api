@@ -1,14 +1,39 @@
 import {enums, props, types} from './generate/schema';
-import {capitalize, reduce} from './generate/util';
-import schema from 'vega-lite/build/vega-lite-schema';
+import { capitalize, reduce } from "./generate/util";
 import {aggregateOps, timeUnitOps, windowOps} from './ops';
 import {
-  transform, groupby, aggregateOp, timeUnitOp, windowOp,
-  field, fieldType, not, logical, repeat, value,
-  selection, selref, binding, projection, encoding, channel,
-  source, sourceFormat, generator, format, lookupData, data,
-  unit, mark, layer, spec
-} from './types';
+  transform,
+  groupby,
+  aggregateOp,
+  timeUnitOp,
+  windowOp,
+  field,
+  fieldType,
+  not,
+  logical,
+  repeat,
+  value,
+  selection,
+  selref,
+  binding,
+  projection,
+  encoding,
+  channel,
+  source,
+  sourceFormat,
+  generator,
+  format,
+  lookupData,
+  data,
+  unit,
+  mark,
+  layer,
+  spec,
+  Spec,
+} from "./types";
+import { JsonSchema } from "./generate/schema-interface";
+
+const schema: JsonSchema = require("vega-lite/build/vega-lite-schema");
 
 const markTypes = enums(schema, {$ref: '#/definitions/AnyMark'});
 const dataFormats = types(schema, {$ref: '#/definitions/DataFormat'});
@@ -37,7 +62,7 @@ function marks() {
 
 function channels() {
   const items = props(schema, {$ref: '#/definitions/FacetedEncoding'});
-  return reduce(items, v => channel(v));
+  return reduce(items, (v) => channel(v as string));
 }
 
 function selections() {
@@ -45,41 +70,55 @@ function selections() {
   return reduce(items, v => selection(v), k => `select${capitalize(k)}`);
 }
 
-export const api = {
+
+
+export const api: { [key: string]: Spec } = {
   // top-level specifications
-  mark:     unit(markTypes),
+  mark: unit(markTypes),
   ...marks(),
-  layer:    layer('...layer'),
-  concat:   spec('Concatenate', 'TopLevelNormalizedConcatSpec<GenericSpec>', '...concat'),
-  hconcat:  spec('Horizontally concatenate', 'TopLevelNormalizedHConcatSpec<GenericSpec>', '...hconcat'),
-  vconcat:  spec('Vertically concatenate', 'TopLevelNormalizedVConcatSpec<GenericSpec>', '...vconcat'),
-  _repeat:  spec('Repeat', 'TopLevelRepeatSpec', 'repeat', 'spec'),
-  _facet:   spec('Facet', 'TopLevelFacetSpec', 'facet', 'spec'),
+  layer: layer("...layer"),
+  concat: spec(
+    "Concatenate",
+    "TopLevelNormalizedConcatSpec<GenericSpec>",
+    "...concat"
+  ),
+  hconcat: spec(
+    "Horizontally concatenate",
+    "TopLevelNormalizedHConcatSpec<GenericSpec>",
+    "...hconcat"
+  ),
+  vconcat: spec(
+    "Vertically concatenate",
+    "TopLevelNormalizedVConcatSpec<GenericSpec>",
+    "...vconcat"
+  ),
+  _repeat: spec("Repeat", "TopLevelRepeatSpec", "repeat", "spec"),
+  _facet: spec("Facet", "TopLevelFacetSpec", "facet", "spec"),
 
   // externally defined exports
   $register: {
-    desc: 'Register Vega and Vega-Lite with the API.',
-    doc:  'Utilities',
-    arg:  ['vega', 'vegalite', 'options'],
-    src:  '__view__'
+    desc: "Register Vega and Vega-Lite with the API.",
+    doc: "Utilities",
+    arg: ["vega", "vegalite", "options"],
+    src: "__view__",
   },
   $vega: {
-    desc: 'Access the registered Vega instance.',
-    doc:  'Utilities',
-    src:  '__view__',
-    name: '_vega'
+    desc: "Access the registered Vega instance.",
+    doc: "Utilities",
+    src: "__view__",
+    name: "_vega",
   },
   $vegalite: {
-    desc: 'Access the registered Vega-Lite instance.',
-    doc:  'Utilities',
-    src:  '__view__',
-    name: '_vegalite'
+    desc: "Access the registered Vega-Lite instance.",
+    doc: "Utilities",
+    src: "__view__",
+    name: "_vegalite",
   },
 
   // data specification
   data: data(),
-  urlData: source('url', ['url']),
-  inlineData: source('inline', ['values'], true),
+  urlData: source("url", ["url"]),
+  inlineData: source("inline", ["values"], true),
   ...generators(),
   ...sources(),
   ...formats(),
@@ -87,14 +126,14 @@ export const api = {
 
   // encoding channels
   ...channels(),
-  field:    field(),
-  fieldN:   fieldType('nominal'),
-  fieldO:   fieldType('ordinal'),
-  fieldQ:   fieldType('quantitative'),
-  fieldT:   fieldType('temporal'),
+  field: field(),
+  fieldN: fieldType("nominal"),
+  fieldO: fieldType("ordinal"),
+  fieldQ: fieldType("quantitative"),
+  fieldT: fieldType("temporal"),
   encoding: encoding(),
-  repeat:   repeat(),
-  value:    value(),
+  repeat: repeat(),
+  value: value(),
 
   // cartographic projection
   projection: projection(),
@@ -104,40 +143,44 @@ export const api = {
   _selref: selref(),
 
   // bindings
-  checkbox:  binding('BindCheckbox', 'checkbox'),
-  menu:      binding('BindRadioSelect', 'select', ['...options']),
-  radio:     binding('BindRadioSelect', 'radio', ['...options']),
-  slider:    binding('BindRange', 'range', ['min', 'max', 'step']),
+  checkbox: binding("BindCheckbox", "checkbox"),
+  menu: binding("BindRadioSelect", "select", ["...options"]),
+  radio: binding("BindRadioSelect", "radio", ["...options"]),
+  slider: binding("BindRange", "range", ["min", "max", "step"]),
 
   // logical operations
   not: not(),
-  and: logical('and'),
-  or:  logical('or'),
+  and: logical("and"),
+  or: logical("or"),
 
   // transforms
-  aggregate:     transform('aggregate', 'AggregateTransform', '...aggregate'),
-  bin:           transform('bin', 'BinTransform', 'field', ['bin', true]),
-  calculate:     transform('calculate', 'CalculateTransform', 'calculate'),
-  density:       transform('density', 'DensityTransform', 'density'),
-  filter:        transform('filter', 'FilterTransform', 'filter'),
-  flatten:       transform('flatten', 'FlattenTransform', '...flatten'),
-  fold:          transform('fold', 'FoldTransform', '...fold'),
-  impute:        transform('impute', 'ImputeTransform', 'impute', 'key'),
-  joinaggregate: transform('joinaggregate', 'JoinAggregateTransform', '...joinaggregate'),
-  join:          transform('join', 'JoinAggregateTransform', '...joinaggregate'),
-  loess:         transform('loess', 'LoessTransform', 'loess'),
-  lookup:        transform('lookup', 'LookupTransform', 'lookup'),
-  pivot:         transform('pivot', 'PivotTransform', 'pivot'),
-  quantile:      transform('quantile', 'QuantileTransform', 'quantile'),
-  regression:    transform('regression', 'RegressionTransform', 'regression'),
-  sample:        transform('sample', 'SampleTransform', 'sample'),
-  stack:         transform('stack', 'StackTransform', 'stack'),
-  timeUnit:      transform('timeUnit', 'TimeUnitTransform', 'timeUnit', 'field'),
-  window:        transform('window', 'WindowTransform', '...window'),
-  groupby:       groupby(),
+  aggregate: transform("aggregate", "AggregateTransform", "...aggregate"),
+  bin: transform("bin", "BinTransform", "field", ["bin", true]),
+  calculate: transform("calculate", "CalculateTransform", "calculate"),
+  density: transform("density", "DensityTransform", "density"),
+  filter: transform("filter", "FilterTransform", "filter"),
+  flatten: transform("flatten", "FlattenTransform", "...flatten"),
+  fold: transform("fold", "FoldTransform", "...fold"),
+  impute: transform("impute", "ImputeTransform", "impute", "key"),
+  joinaggregate: transform(
+    "joinaggregate",
+    "JoinAggregateTransform",
+    "...joinaggregate"
+  ),
+  join: transform("join", "JoinAggregateTransform", "...joinaggregate"),
+  loess: transform("loess", "LoessTransform", "loess"),
+  lookup: transform("lookup", "LookupTransform", "lookup"),
+  pivot: transform("pivot", "PivotTransform", "pivot"),
+  quantile: transform("quantile", "QuantileTransform", "quantile"),
+  regression: transform("regression", "RegressionTransform", "regression"),
+  sample: transform("sample", "SampleTransform", "sample"),
+  stack: transform("stack", "StackTransform", "stack"),
+  timeUnit: transform("timeUnit", "TimeUnitTransform", "timeUnit", "field"),
+  window: transform("window", "WindowTransform", "...window"),
+  groupby: groupby(),
 
   // operations
-  ...apiOps(aggregateOps, aggregateOp, 'as'),
-  ...apiOps(windowOps, windowOp, 'as'),
-  ...apiOps(timeUnitOps, timeUnitOp, 'field', 'as')
+  ...apiOps(aggregateOps, aggregateOp, "as"),
+  ...apiOps(windowOps, windowOp, "as"),
+  ...apiOps(timeUnitOps, timeUnitOp, "field", "as"),
 };

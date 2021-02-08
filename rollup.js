@@ -14,19 +14,22 @@ const rollup = require('rollup'),
 })();
 
 function api(output) {
-  return rollup.rollup({
-    input: 'api/index.js',
-    external: ['fs', 'vega-lite/build/vega-lite-schema'],
-    plugins: [json()]
-  }).then(function(bundle) {
-    return bundle.write({
-      file: output,
-      format: 'cjs',
-      globals: {fs: 'fs'}
+  return rollup
+    .rollup({
+      input: "built-api/index.js",
+      external: ["fs", "vega-lite/build/vega-lite-schema"],
+      plugins: [json()],
+    })
+    .then(function (bundle) {
+      return bundle.write({
+        file: output,
+        format: "cjs",
+        globals: { fs: "fs" },
+      });
+    })
+    .then(function () {
+      console.warn("↳ " + output); // eslint-disable-line no-console
     });
-  }).then(function() {
-    console.warn('↳ ' + output); // eslint-disable-line no-console
-  });
 }
 
 function src(output) {

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="171px" preserveAspectRatio="none" style="width:398px;height:171px;" version="1.1" viewBox="0 0 398 171" width="398px" zoomAndPan="magnify"><defs/><g><ellipse cx="295.4178" cy="44.9342" fill="#F8F8F8" rx="15.4178" ry="12.9342" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="17" x="286.9178" y="48.6764">api</text><ellipse cx="214.5563" cy="45.242" fill="#F8F8F8" rx="18.5563" ry="13.242" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="22" x="203.5563" y="48.9842">doc</text><ellipse cx="128.4117" cy="45.242" fill="#F8F8F8" rx="53.9117" ry="13.242" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="72" x="92.4117" y="48.9842">generate/api</text><ellipse cx="33.7487" cy="45.242" fill="#F8F8F8" rx="27.7487" ry="13.242" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="35" x="16.2487" y="48.9842">index</text><ellipse cx="103.6127" cy="96.242" fill="#F8F8F8" rx="34.1127" ry="13.242" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="44" x="81.6127" y="99.9842">method</text><ellipse cx="362.5563" cy="147.242" fill="#F8F8F8" rx="18.5563" ry="13.242" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="22" x="351.5563" y="150.9842">ops</text><ellipse cx="158.5269" cy="147.242" fill="#F8F8F8" rx="35.5269" ry="13.242" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="46" x="135.5269" y="150.9842">schema</text><ellipse cx="340.4203" cy="96.242" fill="#F8F8F8" rx="24.9203" ry="13.242" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="31" x="324.9203" y="99.9842">types</text><ellipse cx="281.4178" cy="146.9342" fill="#F8F8F8" rx="15.4178" ry="12.9342" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="17" x="272.9178" y="150.6764">util</text><ellipse cx="172.5919" cy="96.242" fill="#F8F8F8" rx="22.0919" ry="13.242" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="27" x="159.0919" y="99.9842">write</text><!--MD5=[836945216bbf4d37fc8317a423feebb5]
+link api to ops--><path d="M310.544,48.362 C328.828,52.127 358.919,61.406 372.5,83 C381.322,97.0265 376.415,116.1781 370.815,129.6723 " fill="none" id="api-&gt;ops" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="368.744,134.3679,376.0349,127.7465,370.7611,129.7928,368.7148,124.5191,368.744,134.3679" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[42474bf09a773d18c820a2c223969e9f]
+link api to schema--><path d="M285.124,54.67 C270.09,67.1163 241.229,90.577 215.5,109 C204.085,117.1736 190.966,125.7433 180.194,132.5746 " fill="none" id="api-&gt;schema" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="175.732,135.3897,185.4779,133.9692,179.9604,132.7212,181.2083,127.2038,175.732,135.3897" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[9991dc93dab702a13a75ed827f562f03]
+link api to types--><path d="M304.606,55.916 C311.051,62.9333 319.8,72.4605 327.047,80.3516 " fill="none" id="api-&gt;types" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="330.468,84.0759,327.3268,74.7414,327.0861,80.3931,321.4344,80.1525,330.468,84.0759" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[67dd891e26e5885ce3ffa98e19ee10d6]
+link api to util--><path d="M293.783,58.262 C291.303,75.976 286.708,108.7986 283.896,128.889 " fill="none" id="api-&gt;util" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="283.187,133.9501,288.3966,125.5919,283.8805,128.9984,280.4739,124.4823,283.187,133.9501" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[e62915e6864c0f73f18650bbdef89ece]
+link doc to schema--><path d="M214.269,58.445 C213.511,71.7991 210.789,93.2147 201.5,109 C196.19,118.0238 187.875,125.9338 179.966,132.0988 " fill="none" id="doc-&gt;schema" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="175.635,135.3402,185.2368,133.1479,179.6374,132.3434,180.4419,126.744,175.635,135.3402" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[f81d211908a8b980ab11226b19d5f56a]
+link doc to util--><path d="M221.926,57.084 C233.963,75.0489 257.752,110.5554 271.345,130.8428 " fill="none" id="doc-&gt;util" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="274.244,135.1705,272.5579,125.467,271.4611,131.0165,265.9116,129.9197,274.244,135.1705" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[2f4ac4feee77b887e0cbdc5ce528df73]
+link doc to write--><path d="M205.179,56.875 C199.306,63.7261 191.647,72.6619 185.22,80.1602 " fill="none" id="doc-&gt;write" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="181.795,84.1557,190.6887,79.9246,185.0486,80.3591,184.6141,74.7189,181.795,84.1557" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[345e1675a880401ca4055efc6bc656b0]
+link generate/api to method--><path d="M122.32,58.112 C119.172,64.2835 115.297,71.8776 111.884,78.568 " fill="none" id="generate/api-&gt;method" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="109.609,83.027,117.2621,76.8278,111.8812,78.5731,110.1359,73.1922,109.609,83.027" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[051d88f890826d8f922a50b4b33ad040]
+link generate/api to schema--><path d="M97.0944,55.596 C83.9853,61.3283 70.0694,70.0788 62.5,83 C56.659,92.9707 55.9613,99.4723 62.5,109 C75.4125,127.8151 99.3462,137.0657 120.085,141.6122 " fill="none" id="generate/api-&gt;schema" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="125.004,142.6175,116.9875,136.896,120.1053,141.6161,115.3852,144.7339,125.004,142.6175" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[0d52728ec657f99555c335c0ee839376]
+link generate/api to write--><path d="M139.151,57.862 C145.246,64.6486 152.94,73.2175 159.402,80.4138 " fill="none" id="generate/api-&gt;write" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="162.847,84.2505,159.8096,74.8817,159.5062,80.5304,153.8575,80.227,162.847,84.2505" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[394fbdadc9c768695927f3b4c080c65d]
+link <b>index</b> to api--><path d="M47.1674,33.664 C54.6061,28.234 64.2606,22.311 74,19.5 C107.948,9.703 198.327,12.699 233,19.5 C248.635,22.567 265.29,29.568 277.473,35.46 " fill="none" id="&lt;b&gt;index&lt;/b&gt;-&gt;api" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="282.075,37.736,275.782,30.1598,277.5935,35.5188,272.2345,37.3303,282.075,37.736" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[1400a79e2149a28cefba3e6dbdc950c9]
+link <b>index</b> to doc--><path d="M47.1674,33.664 C54.6061,28.234 64.2606,22.311 74,19.5 C120.545,6.067 137.333,3.333 183,19.5 C189.554,21.82 195.741,26.148 200.869,30.589 " fill="none" id="&lt;b&gt;index&lt;/b&gt;-&gt;doc" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="204.572,33.975,200.6296,24.9496,200.8821,30.6008,195.2309,30.8534,204.572,33.975" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[cceffee8db557459a64d2e36fa513540]
+link <b>index</b> to generate/api--><path d="M61.332,45 C63.9284,45 66.5249,45 69.1213,45 " fill="none" id="&lt;b&gt;index&lt;/b&gt;-&gt;generate/api" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="74.4508,45,65.4508,41,69.4508,45,65.4508,49,74.4508,45" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[f69552a9dac2c952866214f746fdd387]
+link method to schema--><path d="M115.98,108.1189 C123.607,114.9133 133.456,123.6882 141.755,131.0814 " fill="none" id="method-&gt;schema" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="145.687,134.5851,141.6275,125.6118,141.9535,131.2592,136.3061,131.5853,145.687,134.5851" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[9921d1f5c00ba3c502637411d751e56e]
+link method to util--><path d="M128.859,104.7307 C133.712,106.1751 138.757,107.6531 143.5,109 C185.555,120.9432 235.114,133.9792 261.911,140.9422 " fill="none" id="method-&gt;util" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="266.957,142.2517,259.25,136.1196,262.1173,140.996,257.2409,143.8632,266.957,142.2517" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[18fd795879b41c78fd4fb54aaa4893ee]
+link types to ops--><path d="M345.826,108.8615 C348.582,115.0007 351.993,122.5978 355.01,129.3181 " fill="none" id="types-&gt;ops" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="357.223,134.2477,357.1857,124.3989,355.175,129.6864,349.8876,127.6757,357.223,134.2477" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[63a8797fd64032c49237bbbe18c088a1]
+link types to util--><path d="M327.988,107.3916 C318.635,115.1593 305.826,125.7971 296.022,133.9397 " fill="none" id="types-&gt;util" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="292.023,137.261,301.5023,134.5883,295.8695,134.0666,296.3913,128.4339,292.023,137.261" style="stroke: #000000; stroke-width: 0.5;"/><script type="text/plantuml"><![CDATA[MD5=[1ee042b1ba8da908328117c2ea88d113]
+@startuml
+
+scale max 1920 width
+top to bottom direction
+
+skinparam nodesep 13
+skinparam ranksep 25
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName Tahoma
+skinparam defaultFontSize 12
+skinparam roundCorner 6
+skinparam dpi 150
+skinparam arrowColor black
+skinparam arrowThickness 0.5
+skinparam packageTitleAlignment left
+
+skinparam usecase {
+  borderThickness 0.5
+}
+
+skinparam rectangle {
+  borderThickness 0.5
+}
+
+skinparam component {
+  borderThickness 1
+}
+
+
+(api)
+(doc)
+(generate/api)
+(<b>index</b>)
+(method)
+(ops)
+(schema)
+(types)
+(util)
+(write)
+
+
+(api) --> (ops)
+(api) --> (schema)
+(api) --> (types)
+(api) --> (util)
+(doc) --> (schema)
+(doc) --> (util)
+(doc) --> (write)
+(generate/api) --> (method)
+(generate/api) --> (schema)
+(generate/api) --> (write)
+(<b>index</b>) -[thickness=1]> (api)
+(<b>index</b>) -[thickness=1]> (doc)
+(<b>index</b>) -[thickness=1]> (generate/api)
+(method) --> (schema)
+(method) --> (util)
+(types) --> (ops)
+(types) --> (util)
+
+@enduml
+
+
+' View and edit on https://arkit.pro
+]]></script></g></svg>

@@ -1,6 +1,52 @@
 import {aggregateOps, timeUnitOps} from './ops';
 import {article, capitalize, code, link, reduce, uppercase} from './generate/util';
 
+type Type = {
+  string?: { key: string; set: { type: string } };
+  array?: { map: Type };
+};
+
+export type Call = {
+  call: string;
+  from: string;
+  init: string;
+  prop: string;
+  self: string;
+  args: string;
+  desc: string;
+};
+
+export type Field = {
+  arg: string[];
+  set?: string[];
+  desc: string;
+  nest?: string[];
+  type?: string;
+  flag?: number;
+  pre?: string;
+  prop?: string;
+  multi?: boolean;
+  mod?: string;
+};
+
+export type Spec = {
+  desc: string;
+  doc: string;
+  ctr?: Spec;
+  def: string;
+  call?: { [key: string]: Call };
+  pass?: { [key: string]: Call };
+  init?: string;
+  arg?: string[];
+  key: (null | string)[];
+  ext: { [key: string]: Spec };
+  // set?: string[];
+  src?: string;
+  name?: string;
+  nest?: { keys: string; rest: string };
+  type?: Type;
+};
+
 const N = 'nominal';
 const O = 'ordinal';
 const Q = 'quantitative';
@@ -214,15 +260,15 @@ export function selref() {
   };
 }
 
-export function binding(def, input, args) {
-  const set = input ? {input: input} : null;
+export function binding(def: string, input: string, args?: string[]) {
+  const set = input ? { input: input } : null;
 
   return {
     desc: `Define a new HTML ${code(input)} input element binding.`,
-    doc:  'Selection Bindings',
-    def:  def,
-    set:  set,
-    arg:  args
+    doc: "Selection Bindings",
+    def: def,
+    set: set,
+    arg: args,
   };
 }
 
@@ -248,52 +294,74 @@ for (const key in timeUnitOps) {
   };
 }
 
-export function channel(type) {
-  const spec = {
+export function channel(type: string) {
+  const spec: Spec = {
     desc: `Specify the ${code(type)} encoding channel.`,
-    doc:  'Encodings',
-    def:  `FacetedEncoding/properties/${type}`,
-    key:  [null, type],
-    ext:  {
-      fieldN: {arg: ['field'], set: {type: N}, desc: 'Encode the field as a nominal data type.'},
-      fieldO: {arg: ['field'], set: {type: O}, desc: 'Encode the field as an ordinal data type.'},
-      fieldQ: {arg: ['field'], set: {type: Q}, desc: 'Encode the field as a quantitative data type.'},
-      fieldT: {arg: ['field'], set: {type: T}, desc: 'Encode the field as a temporal data type.'},
-      if: {arg: ['+++condition'], flag: 0, nest: ['test'], desc: 'Perform a conditional encoding. If the provided condition (first argument) evaluates to true, apply the provided encoding (second argument).'},
+    doc: "Encodings",
+    def: `FacetedEncoding/properties/${type}`,
+    key: [null, type],
+    ext: {
+      fieldN: {
+        arg: ["field"],
+        set: { type: N },
+        desc: "Encode the field as a nominal data type.",
+      },
+      fieldO: {
+        arg: ["field"],
+        set: { type: O },
+        desc: "Encode the field as an ordinal data type.",
+      },
+      fieldQ: {
+        arg: ["field"],
+        set: { type: Q },
+        desc: "Encode the field as a quantitative data type.",
+      },
+      fieldT: {
+        arg: ["field"],
+        set: { type: T },
+        desc: "Encode the field as a temporal data type.",
+      },
+      if: {
+        arg: ["+++condition"],
+        flag: 0,
+        nest: ["test"],
+        desc:
+          "Perform a conditional encoding. If the provided condition (first argument) evaluates to true, apply the provided encoding (second argument).",
+      },
       ...channelAggregate,
-      ...channelTimeUnit
-    }
+      ...channelTimeUnit,
+    },
   };
 
-  const fieldN = {key: 'field', set: {type: N}},
-        fieldO = {key: 'field', set: {type: O}},
-        fieldQ = {key: 'field', set: {type: Q}};
+  const fieldN = { key: "field", set: { type: N } },
+    fieldO = { key: "field", set: { type: O } },
+    fieldQ = { key: "field", set: { type: Q } };
 
   switch (type) {
-    case 'detail':
-    case 'tooltip':
+    case "detail":
+    case "tooltip":
       spec.type = {
-        array:  {map: {string: fieldN}},
-        string: fieldN
+        array: { map: { string: fieldN } },
+        string: fieldN,
       };
       break;
-    case 'href':
-    case 'key':
-    case 'shape':
-    case 'text':
-      spec.type = {string: fieldN};
+    case "href":
+    case "key":
+    case "shape":
+    case "text":
+      spec.type = { string: fieldN };
       break;
-    case 'column':
-    case 'facet':
-    case 'order':
-    case 'row':
-      spec.type = {string: fieldO};
+    case "column":
+    case "facet":
+    case "order":
+    case "row":
+      spec.type = { string: fieldO };
       break;
-    case 'latitude':
-    case 'longitude':
-    case 'latitude2':
-    case 'longitude2':
-      spec.type = {string: fieldQ};
+    case "latitude":
+    case "longitude":
+    case "latitude2":
+    case "longitude2":
+      spec.type = { string: fieldQ };
       break;
   }
 
@@ -364,18 +432,20 @@ export function data() {
   };
 }
 
-export function source(type, args, raw) {
+export function source(type, args, raw?: boolean) {
   return {
     desc: `Define a ${type} data source.`,
-    doc:  'Data',
-    def:  `${capitalize(type)}Data`,
-    arg:  args,
-    ...(raw ? {
-      type: typeRaw,
-      ext: {
-        values: { arg: ['values'], type: typeRaw }
-      }
-    } : null)
+    doc: "Data",
+    def: `${capitalize(type)}Data`,
+    arg: args,
+    ...(raw
+      ? {
+          type: typeRaw,
+          ext: {
+            values: { arg: ["values"], type: typeRaw },
+          },
+        }
+      : null),
   };
 }
 

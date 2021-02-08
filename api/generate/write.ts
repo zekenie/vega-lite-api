@@ -1,7 +1,7 @@
-import {writeFile} from 'fs';
+import { writeFile } from "fs";
 
-export function write(name, data) {
-  return new Promise(function(resolve, reject) {
-    writeFile(name, data, 'utf8', err => err ? reject(err) : resolve(data));
+export function write(name: string, data: string): Promise<string> {
+  return new Promise<string>(function (resolve, reject) {
+    writeFile(name, data, "utf8", (err) => (err ? reject(err) : resolve(data)));
   });
 }
